@@ -4,13 +4,17 @@
 
 class ship{
 
-    private
-
-    
+    private:
 
 
 
-}
+    public:
+
+
+
+
+
+};
 
 
 
