@@ -3,7 +3,7 @@
 
 #include "grid.h"
 
-class missle {  
+class missile {  
     private:
         int x , y; // to place the missles
 
