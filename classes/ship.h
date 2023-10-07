@@ -2,16 +2,27 @@
 
 #define SHIP_H
 
-class ship{
+#include<iostream>
+
+#include<string>
+
+class ship {
 
     private:
+
+    std::string name;
+
+    int length;
+
+    int width;
 
 
 
     public:
 
+    int numberOfhits();
 
-
+    virtual void placeShip();
 
 
 };

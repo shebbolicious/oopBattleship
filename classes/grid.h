@@ -4,7 +4,7 @@
 
 class grid {
 
-    protected:
+    private:
 //initialise weight and length of grid
     int length;
 
@@ -16,6 +16,8 @@ class grid {
 
     int playertwoGrid(int l,int w);
 
+    void resetGrid();
+
 //getters and setters
 
   int get_length();
@@ -25,9 +27,6 @@ class grid {
   int get_width();
 
   int set_width(int w);
-
-
-
 
 
 
