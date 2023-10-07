@@ -12,10 +12,16 @@ class grid {
 
    public:
 
-    int playerOneGrid(int l, int w);
+    grid();
 
-    int playertwoGrid(int l,int w);
+    grid(int l, int w); // 
+ 
 
+    int playerOneGrid();// function used if there are single player game mode so only one gird is created
+
+    int playerTwoGrid();
+
+   
     void resetGrid();
 
 //getters and setters
