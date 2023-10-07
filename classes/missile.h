@@ -3,8 +3,6 @@
 
 #include "grid.h"
 
-//#include "grid.h"
-
 class missle {  
     private:
         int x , y; // to place the missles
@@ -24,8 +22,7 @@ class missle {
 
         bool isHit(); //determines if the missile hit ship or not
 
-
-
+        void place(); //where user will enter coordinates to place missile
 };
 
 #endif
