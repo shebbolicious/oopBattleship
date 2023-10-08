@@ -1,7 +1,7 @@
 
 #ifndef GRID_h
 #define GRID_h
-
+#include <vector>
 class grid {
 
     private:
@@ -17,12 +17,12 @@ class grid {
     grid(int l, int w); // 
  
 
-    int playerOneGrid();// function used if there are single player game mode so only one gird is created
+    std::vector<std::vector<int>> playerOneGrid();// function used if there are single player game mode so only one gird is created
 
-    int playerTwoGrid();
+    std::vector<std::vector<int>> playerTwoGrid();
 
    
-    void resetGrid();
+    void resetGrid(std::vector<std::vector<int>> &playerOne,std::vector<std::vector<int>>&playerTwo);
 
 //getters and setters
 
@@ -32,7 +32,13 @@ class grid {
 
   int get_width();
 
-  int set_width(int w);
+  void set_width(int w);
+
+
+
+
+};
+#endif
 
 
 
