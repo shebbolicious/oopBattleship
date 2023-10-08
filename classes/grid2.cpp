@@ -2,7 +2,7 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-
+//ignore this whole file i fucked up git and had to change it manually here
 
 grid :: grid(int l,int w){
 
