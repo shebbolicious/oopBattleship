@@ -1,61 +1,51 @@
 #include "grid.h"
+
 #include <iostream>
+#include <vector>
+using namespace std;
 
-int grid ::playerOneGrid (int l, int w) {
-  int playerOne[l][w];
+grid ::grid(int l, int w) {
+  // grid sets the l and w inputted into variables lenth and width
+  length = l;
 
-  int num = 0;
+  width = w;
+}
 
-  for (int i = 0; i < l; i++) {
-    for (int j = 0; j < w; j++) {
-      // if(i == 0 ){
+// initialises a grid for player one
+std::vector<std::vector<int>> grid ::playerOneGrid() {
+  // initialise zeros based on length and width
 
-      // playerOne[i][j]=5;
-
-      //  playerOne[i][j+1]= num;
-
-      //  num=num+1;
-
-      //  }
-
-      playerOne[i][j] = 0;
-
-      std::cout << playerOne[i][j] << std::endl;
-    }
-  }
+  std::vector<std::vector<int>> playerOne(length, std::vector<int>(width, 0));
 
   return playerOne;
 }
 
-
-int grid ::playertwoGrid(int l, int w) {
-  int playerTwo[l][w];
-
-  for (int i = 0; i < l; i++) {
-    for (int j = 0; j < w; j++) {
-      // if(i == 0 ){
-
-      // playerOne[i][j]=5;
-
-      //  playerOne[i][j+1]= num;
-
-      //  num=num+1;
-
-      //  }
-
-      playerTwo[i][j] = 0;
-
-      std::cout << playerTwo[i][j] << std::endl;
-    }
-  }
+// inititialises a grid for player two
+std::vector<std::vector<int>> grid ::playerTwoGrid() {
+  std::vector<std::vector<int>> playerTwo(length, std::vector<int>(width, 0));
 
   return playerTwo;
 }
 
+// resets a grid for
 
+void grid ::resetGrid(std::vector<std::vector<int>> &playerOne,std::vector<std::vector<int>>&playerTwo){
 
- void grid ::resetGrid() {
- playerOneGrid(11, 11);
+  for (int i = 0; i < length; i++) {
+    for (int x = 0; x < width; x++) {
+      playerOne[i][x] = 0;
 
- playertwoGrid(11, 11);
+      playerTwo[i][x] = 0;
+    }
+  }
 }
+
+// setters and getters
+
+int grid::get_length() { return length; }
+
+void grid ::set_length(int l) { length = l; }
+
+void grid ::set_width(int w) { width = w; }
+
+int grid ::get_width() { return width; }
