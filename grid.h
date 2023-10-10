@@ -1,6 +1,7 @@
 // Grid.h
 #pragma once
 #include <vector>
+#include "StraightShip.h"
 
 class Ship;
 
@@ -8,7 +9,7 @@ class Grid {
 public:
     Grid();
     void display();
-    bool placeShip(int x, int y, int length, bool vertical);
+    bool placeShip(const StraightShip& ship);
     bool checkHit(int x, int y);
     bool isGameOver();
 private:

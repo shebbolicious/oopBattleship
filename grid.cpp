@@ -1,7 +1,7 @@
+#include "StraightShip.h"
 #include "Grid.h"
 #include "Ship.h"
 #include <iostream>
-#include "StraightShip.h"
 #include "LShapedShip.h"
 
 Grid::Grid() {
@@ -10,9 +10,14 @@ Grid::Grid() {
 
 void Grid::display() {
     // Display the grid with labels
-    std::cout << "   0 1 2 3 4 5 6 7 8 9\n";
+    std::cout << "   ";
+    for (char xLabel = 'A'; xLabel < 'A' + GRID_SIZE; ++xLabel) {
+        std::cout << xLabel << "  ";
+    }
+    std::cout << "\n";
+
     for (int i = 0; i < GRID_SIZE; ++i) {
-        std::cout << i << " ";
+        std::cout << i + 1 << " ";
         for (int j = 0; j < GRID_SIZE; ++j) {
             std::cout << grid[i][j] << " ";
         }
@@ -31,8 +36,12 @@ bool Grid::checkHit(int x, int y) {
     return false;
 }
 
+bool Grid::placeShip(const StraightShip& ship) {
+    int x = ship.getX();
+    int y = ship.getY();
+    int length = ship.getLength();
+    bool vertical = ship.isVertical(); // Use the getter method
 
-bool Grid::placeShip(int x, int y, int length, bool vertical) {
     if (isValidPlacement(x, y, length, vertical)) {
         // Place the ship on the grid
         char shipSymbol = (vertical) ? '|' : '-';
@@ -44,21 +53,12 @@ bool Grid::placeShip(int x, int y, int length, bool vertical) {
             }
         }
 
-        // Create the ship object and add it to the list
-        if (length == 2) {
-            StraightShip ship(x, y, length, vertical);
-            ships.push_back(ship);
-        } else if (length == 6) {
-            LShapedShip ship;
-            ship.setPosition(x, y);
-            ships.push_back(ship);
-        }
-
+        // Add the ship to the list
+        ships.push_back(ship);
         return true;
     }
     return false;
 }
-
 
 bool Grid::isGameOver() {
     for (const Ship& ship : ships) {

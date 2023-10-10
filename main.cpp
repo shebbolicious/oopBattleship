@@ -9,21 +9,25 @@ int main() {
     Grid player1Grid;
     Grid player2Grid;
 
+    // Create ships for player 1
+    StraightShip player1Ship1(0, 0, 2, false);
+    StraightShip player1Ship2(1, 1, 3, true);
+    StraightShip player1Ship3(2, 2, 4, false);
+    StraightShip player1Ship4(3, 3, 5, true);
+
+    // Place player 1's ships on their grid
+    player1Grid.placeShip(player1Ship1);
+    player1Grid.placeShip(player1Ship2);
+    player1Grid.placeShip(player1Ship3);
+    player1Grid.placeShip(player1Ship4);
+
     StraightShip player1StraightShip;
     StraightShip player2StraightShip;
 
     LShapedShip player1LShapedShip;
     LShapedShip player2LShapedShip;
 
-    // Place Player 1's ships
-    std::cout << "Player 1, place your ships:\n";
-    player1Grid.placeShip(2, 3, player1StraightShip.getLength(), true);
-    player1Grid.placeShip(7, 5, player1LShapedShip.getLength(), false);
-
-    // Place Player 2's ships
-    std::cout << "Player 2, place your ships:\n";
-    player2Grid.placeShip(4, 6, player2StraightShip.getLength(), true);
-    player2Grid.placeShip(1, 2, player2LShapedShip.getLength(), false);
+    player1Grid.display();
 
     while (!player1Grid.isGameOver() && !player2Grid.isGameOver()) {
         // Player 1's turn

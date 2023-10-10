@@ -1,6 +1,18 @@
 // StraightShip.cpp
 #include "StraightShip.h"
 
+int StraightShip::getX() const {
+    return x;
+}
+
+int StraightShip::getY() const {
+    return y;
+}
+
+bool StraightShip::isVertical() const {
+    return vertical;
+}
+
 StraightShip::StraightShip() : Ship(0), x(0), y(0), length(0), vertical(false) {
     // Initialize properties here
 }
