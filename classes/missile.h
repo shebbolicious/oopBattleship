@@ -22,7 +22,7 @@ class missile {
 
         bool isHit(); //determines if the missile hit ship or not
 
-        void place(); //where user will enter coordinates to place missile
+        void fire(); //where user will enter coordinates to place missile
 };
 
 #endif
