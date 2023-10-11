@@ -1,7 +1,7 @@
 #ifndef MISSLE_H
 #define MISSLE_H
 
-#include "grid.h"
+//#include "grid.h"
 
 class missile {  
     private:
@@ -13,8 +13,8 @@ class missile {
         int get_y() { return y; }
 
         //setters
-        int set_x( int newX ) { x = newX; }
-        int set_Y( int newY ) { y = newY; }
+        int set_x( int newX ) { x = newX; return newX; }
+        int set_Y( int newY ) { y = newY; return newY; }
     
         //memeber functions
 
