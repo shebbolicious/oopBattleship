@@ -4,19 +4,55 @@
 #include "Missile.h"
 #include <iostream>
 
+using namespace std;
+
 int main() {
     // Initialize game objects
     Grid player1Grid;
     Grid player2Grid;
 
+    bool validInput = false;
+    int ship1[2];
+    bool isHorizontal = true;
+    string isHorizontalInput;
+    
+    cout << "Is ship 1 vertical or horizontal (v or h): " << endl;
+
+while (true) {
+    cin >> isHorizontalInput;
+    
+    if (isHorizontalInput == "v" || isHorizontalInput == "h") {
+        if (isHorizontalInput == "h") {
+            isHorizontal = false;
+        }
+        break; // Exit the loop when valid input is provided
+    } else {
+        cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
+    }
+}
+
+    cout << "Enter ship 1 coordinates: " << endl;
+    while (!validInput) {
+    cin >> ship1[0] >> ship1[1];
+    if (player1Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) == false) {
+        cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+    } else if (player1Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) == true) {
+            validInput = true;
+            break;
+        }
+    };
+
     // Create ships for player 1
-    StraightShip player1Ship1(0, 0, 2, false);
-    StraightShip player1Ship2(1, 1, 3, true);
+    StraightShip player1Ship1(ship1[0], ship1[1], 2, isHorizontal);
+
+    player1Grid.placeShip(player1Ship1);
+
+    StraightShip player1Ship2(0, 8, 3, true);
     StraightShip player1Ship3(2, 2, 4, false);
     StraightShip player1Ship4(3, 3, 5, true);
 
     // Place player 1's ships on their grid
-    player1Grid.placeShip(player1Ship1);
+    
     player1Grid.placeShip(player1Ship2);
     player1Grid.placeShip(player1Ship3);
     player1Grid.placeShip(player1Ship4);

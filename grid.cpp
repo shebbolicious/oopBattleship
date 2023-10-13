@@ -10,14 +10,14 @@ Grid::Grid() {
 
 void Grid::display() {
     // Display the grid with labels
-    std::cout << "   ";
+    std::cout << "  ";
     for (char xLabel = 'A'; xLabel < 'A' + GRID_SIZE; ++xLabel) {
-        std::cout << xLabel << "  ";
+        std::cout << xLabel << " ";
     }
     std::cout << "\n";
 
     for (int i = 0; i < GRID_SIZE; ++i) {
-        std::cout << i + 1 << " ";
+        std::cout << i << " "; // Change this for number (i + 1 = 0****)
         for (int j = 0; j < GRID_SIZE; ++j) {
             std::cout << grid[i][j] << " ";
         }
