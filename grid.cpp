@@ -60,6 +60,34 @@ bool Grid::placeShip(const StraightShip& ship) {
     return false;
 }
 
+bool Grid::placeLShip(const LShapedShip& ship) {
+    int x = ship.getX();
+    int y = ship.getY();
+    bool vertical = ship.isVertical(); // Use the getter method
+
+    if (isValidPlacement(x, y, 3, vertical) && isValidPlacement(x + 2, y + 1, 1, vertical)) {
+        // Place the ship on the grid
+        char shipSymbol = (vertical) ? '|' : '-';
+        
+        if (vertical) {
+            for (int i = 0; i < 3; ++i) {
+                grid[x + i][y] = shipSymbol;
+            }
+            grid[x + 2][y + 1] = shipSymbol;
+        } else {
+            for (int j = 0; j < 3; ++j) {
+                grid[x][y + j] = shipSymbol;
+            }
+            grid[x + 1][y + 2] = shipSymbol;
+        }
+
+        // Add the ship to the list
+        ships.push_back(ship);
+        return true;
+    }
+    return false;
+}
+
 bool Grid::isGameOver() {
     for (const Ship& ship : ships) {
         if (!ship.isSunk()) {

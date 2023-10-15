@@ -34,18 +34,56 @@ while (true) {
     cout << "Enter ship 1 coordinates: " << endl;
     while (!validInput) {
     cin >> ship1[0] >> ship1[1];
-    if (player1Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) == false) {
+    if (player1Grid.isValidPlacement(ship1[1], ship1[0], 2, isHorizontal) == false) {
         cout << "Invalid input. Enter ship 1 coordinates:" << endl;
-    } else if (player1Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) == true) {
+    } else if (player1Grid.isValidPlacement(ship1[1], ship1[0], 2, isHorizontal) == true) {
             validInput = true;
             break;
         }
     };
 
     // Create ships for player 1
-    StraightShip player1Ship1(ship1[0], ship1[1], 2, isHorizontal);
+    StraightShip player1Ship1(ship1[1], ship1[0], 2, isHorizontal);
 
     player1Grid.placeShip(player1Ship1);
+
+
+    validInput = false;
+    isHorizontal = true;
+    int Lship1[2];
+    
+    cout << "Is L ship vertical or horizontal (v or h): " << endl;
+
+while (true) {
+    cin >> isHorizontalInput;
+    
+    if (isHorizontalInput == "v" || isHorizontalInput == "h") {
+        if (isHorizontalInput == "h") {
+            isHorizontal = false;
+        }
+        break; // Exit the loop when valid input is provided
+    } else {
+        cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
+    }
+}
+
+    cout << "Enter ship 1 coordinates: " << endl;
+    while (!validInput) {
+    cin >> Lship1[0] >> Lship1[1];
+    if (player1Grid.isValidPlacement(Lship1[1], Lship1[0], 3, isHorizontal) == false) {
+        cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+    } else if (player1Grid.isValidPlacement(Lship1[1], Lship1[0], 3, isHorizontal) == true) {
+            validInput = true;
+            break;
+        }
+    };
+
+    LShapedShip player1LShip1(Lship1[1], Lship1[0], 3, isHorizontal);
+
+    player1Grid.placeLShip(player1LShip1);
+
+
+
 
     StraightShip player1Ship2(0, 8, 3, true);
     StraightShip player1Ship3(2, 2, 4, false);
