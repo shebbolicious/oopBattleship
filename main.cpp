@@ -118,7 +118,7 @@ using namespace std;
         }
     }
 
-        cout << "Enter ship "<<playerOnecount+1<< " coordinates (y,x) " << endl;
+        cout << "Enter ship "<<playerTwocount+1<< " coordinates (y,x) " << endl;
         while (!validInput) {
         cin >> ship1[0] >> ship1[1];
         if (player2Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) == false) {
