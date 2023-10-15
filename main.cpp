@@ -32,15 +32,16 @@ using namespace std;
 
         while(playerOneship){
 
-            
+            cout<<"player ones turn!"<<endl;
 
             while( playerOnecount<4){
 
                // char
 
+                
 
-
-        cout << "Is ship 1 vertical or horizontal (v or h): " << endl;
+                
+    cout << "Is this ship vertical or horizontal (v or h): " << endl;
 
     while (true) {
         cin >> isHorizontalInput;
@@ -55,11 +56,11 @@ using namespace std;
         }
     }
 
-        cout << "Enter ship 1 coordinates (): " << endl;
+        cout << "Enter ship "<< playerOnecount +1<< " coordinates (y,x) ": " << endl;
         while (!validInput) {
         cin >> ship1[0] >> ship1[1];
         if (player1Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) == false) {
-            cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+            cout << "Ship is out of bounds or overlaps. Please reEnter ship  coordinates:" << endl;
         } else if (player1Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) == true) {
                 validInput = true;
                 break;
@@ -92,15 +93,17 @@ using namespace std;
     
         while(playerTwoship){
 
-            
+            cout<<"player twos turn!"<<endl;
 
             while( playerTwocount<4){
 
                // char
 
+                
 
 
-        cout << "Is ship 1 vertical or horizontal (v or h): " << endl;
+
+        cout << "Is this ship  vertical or horizontal (v or h): " << endl;
 
     while (true) {
         cin >> isHorizontalInput;
@@ -115,11 +118,11 @@ using namespace std;
         }
     }
 
-        cout << "Enter ship 1 coordinates (): " << endl;
+        cout << "Enter ship "<<playerOnecount+1<< " coordinates (y,x) " << endl;
         while (!validInput) {
         cin >> ship1[0] >> ship1[1];
         if (player2Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) == false) {
-            cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+            cout << "Ship is out of bounds or overlaps. please reenter ships coordinates:" << endl;
         } else if (player2Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) == true) {
                 validInput = true;
                 break;
@@ -143,7 +146,7 @@ using namespace std;
 
         };
 
-        playerOneship=false;
+        playerTwoship=false;
 
         };
 
