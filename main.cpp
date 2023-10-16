@@ -6,6 +6,7 @@
 #include "LShapedShip.h"
 #include "Missile.h"
 #include "StraightShip.h"
+#include "StealthShip.h"
 using namespace std;
 
 int main() {
@@ -61,7 +62,7 @@ int main() {
         cin >> ship1[0] >> ship1[1];
         if (player1Grid.isValidPlacement(ship1[0], ship1[1], 2, isHorizontal) ==
             false) {
-          cout << "Ship is out of bounds or overlaps. Please reEnter ship  "
+          cout << "Ship is out of bounds or overlaps. Please reenter ship  "
                   "coordinates:"
                << endl;
         } else if (player1Grid.isValidPlacement(ship1[0], ship1[1], 2,
@@ -85,6 +86,86 @@ int main() {
 
     playerOneship = false;
   };
+
+
+  // Player 1 LShapedShip
+
+    validInput = false;
+    isHorizontal = true;
+    int Lship1[2];
+    
+    cout << "Is L ship vertical or horizontal (v or h): " << endl;
+
+while (true) {
+    cin >> isHorizontalInput;
+    
+    if (isHorizontalInput == "v" || isHorizontalInput == "h") {
+        if (isHorizontalInput == "h") {
+            isHorizontal = false;
+        }
+        break; // Exit the loop when valid input is provided
+    } else {
+        cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
+    }
+}
+
+    cout << "Enter ship 1 coordinates: " << endl;
+    while (!validInput) {
+    cin >> Lship1[0] >> Lship1[1];
+    if (player1Grid.isValidPlacement(Lship1[1], Lship1[0], 3, isHorizontal) == false) {
+        cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+    } else if (player1Grid.isValidPlacement(Lship1[1], Lship1[0], 3, isHorizontal) == true) {
+            validInput = true;
+            break;
+        }
+    };
+
+    LShapedShip player1LShip1(Lship1[1], Lship1[0], 3, isHorizontal);
+
+    player1Grid.placeLShip(player1LShip1);
+
+    player1Grid.display();
+
+
+    // Player 1 StealthShip
+
+    validInput = false;
+    int stealthship[2];
+    isHorizontal = true;
+    
+    cout << "Is the stealth ship vertical or horizontal (v or h): " << endl;
+
+while (true) {
+    cin >> isHorizontalInput;
+    
+    if (isHorizontalInput == "v" || isHorizontalInput == "h") {
+        if (isHorizontalInput == "h") {
+            isHorizontal = false;
+        }
+        break; // Exit the loop when valid input is provided
+    } else {
+        cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
+    }
+}
+
+    cout << "Enter stealth ships coordinates: " << endl;
+    while (!validInput) {
+    cin >> ship1[0] >> ship1[1];
+    if (player1Grid.isValidPlacement(ship1[1], ship1[0], 3, isHorizontal) == false) {
+        cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+    } else if (player1Grid.isValidPlacement(ship1[1], ship1[0], 3, isHorizontal) == true) {
+            validInput = true;
+            break;
+        }
+    };
+
+    StealthShip player1Stealth(ship1[1], ship1[0], 3, isHorizontal);
+
+    player1Grid.placeStealthShip(player1Stealth);
+
+    player1Grid.display();
+
+
 
   // Create ships for player 2
 
@@ -144,11 +225,89 @@ int main() {
     playerTwoship = false;
   };
 
-  
+   // Player 2 LShapedShip
+
+    validInput = false;
+    isHorizontal = true;
+    int Lship2[2];
+    
+    cout << "Is L ship vertical or horizontal (v or h): " << endl;
+
+while (true) {
+    cin >> isHorizontalInput;
+    
+    if (isHorizontalInput == "v" || isHorizontalInput == "h") {
+        if (isHorizontalInput == "h") {
+            isHorizontal = false;
+        }
+        break; // Exit the loop when valid input is provided
+    } else {
+        cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
+    }
+}
+
+    cout << "Enter ship 1 coordinates: " << endl;
+    while (!validInput) {
+    cin >> Lship2[0] >> Lship2[1];
+    if (player2Grid.isValidPlacement(Lship2[1], Lship2[0], 3, isHorizontal) == false) {
+        cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+    } else if (player2Grid.isValidPlacement(Lship2[1], Lship2[0], 3, isHorizontal) == true) {
+            validInput = true;
+            break;
+        }
+    };
+
+    LShapedShip player2LShip1(Lship2[1], Lship2[0], 3, isHorizontal);
+
+    player2Grid.placeLShip(player2LShip1);
+
+    player2Grid.display();
+
+
+    // Player 2 StealthShip
+
+    validInput = false;
+    int stealthship2[2];
+    isHorizontal = true;
+    
+    cout << "Is the stealth ship vertical or horizontal (v or h): " << endl;
+
+while (true) {
+    cin >> isHorizontalInput;
+    
+    if (isHorizontalInput == "v" || isHorizontalInput == "h") {
+        if (isHorizontalInput == "h") {
+            isHorizontal = false;
+        }
+        break; // Exit the loop when valid input is provided
+    } else {
+        cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
+    }
+}
+
+    cout << "Enter stealth ships coordinates: " << endl;
+    while (!validInput) {
+    cin >> stealthship2[0] >> stealthship2[1];
+    if (player2Grid.isValidPlacement(stealthship2[1], stealthship2[0], 3, isHorizontal) == false) {
+        cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+    } else if (player2Grid.isValidPlacement(stealthship2[1], stealthship2[0], 3, isHorizontal) == true) {
+            validInput = true;
+            break;
+        }
+    };
+
+    StealthShip player2Stealth(stealthship2[1], stealthship2[0], 3, isHorizontal);
+
+    player2Grid.placeStealthShip(player2Stealth);
+
+    player2Grid.display();
+
+
+
 
   int shipcount1= 0;
 
-  int shipcount2 =0;
+  int shipcount2 = 0;
 
   bool gameOver = false;
 
@@ -184,13 +343,12 @@ int main() {
 
         Missile missile(playerOneShadow,Missle1x,Missle1y);
 
-        while ( !missile.isvalidShot(Missle1x,Missle1y)){
+        while (!missile.isvalidShot(Missle1x,Missle1y)){
 
-            std::cout<<"invalide input, please reenter coordinates"<<endl;
+            std::cout<<"invalid input, please reenter coordinates"<<endl;
 
             cin>> Missle1x>> Missle1y;
 
-        
         }
 
         if(player1Grid.Getcell(Missle1x,Missle1y)=='|' || player1Grid.Getcell(Missle1x,Missle1y)=='-' ){
@@ -199,11 +357,14 @@ int main() {
 
             shipcount1=shipcount1+1;
 
-        }else{
+        } else if (player1Grid.Getcell(Missle1x,Missle1y)=='S') {
+            playerOneShadow.Setcell(Missle1x,Missle1y,'X');
+            shipcount1=shipcount1+1;
+
+        } else {
 
             playerOneShadow.Setcell(Missle1x,Missle1y,'X');
 ;
-
 
 
         }

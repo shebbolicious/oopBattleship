@@ -2,6 +2,8 @@
 #pragma once
 #include <vector>
 #include "StraightShip.h"
+#include "LShapedShip.h"
+#include "StealthShip.h"
 
 class Ship;
 
@@ -10,6 +12,8 @@ public:
     Grid();
     void display();
     bool placeShip(const StraightShip& ship);
+    bool placeLShip(const LShapedShip& ship);
+    bool placeStealthShip(const StealthShip& ship);
     bool checkHit(int x, int y);
     bool isGameOver();
     bool isValidPlacement(int x, int y, int length, bool vertical);

@@ -1,5 +1,6 @@
 // StraightShip.cpp
 #include "StraightShip.h"
+#include "grid.h"
 
 int StraightShip::getX() const {
     return x;
@@ -27,8 +28,15 @@ StraightShip::StraightShip(int x, int y, int length, bool vertical) : Ship(lengt
 }
 
 bool StraightShip::isHit(int x, int y) const {
-    // Implement hit logic for straight ships
     // Check if the hit coordinates match the ship's position
-    // and update the hits count if hit
-    return false; // Implement this logic
+    if (vertical) {
+        if (x == this->x && y >= this->y && y < this->y + length) {
+            return true;
+        }
+    } else {
+        if (y == this->y && x >= this->x && x < this->x + length) {
+            return true;
+        }
+    }
+    return false;
 }

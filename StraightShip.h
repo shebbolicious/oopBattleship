@@ -11,7 +11,7 @@ public:
     int getY() const;
     bool isVertical() const;
 
-private:
+protected:
     int x;        // x-coordinate of the ship's starting position
     int y;        // y-coordinate of the ship's starting position
     int length;   // length of the ship
