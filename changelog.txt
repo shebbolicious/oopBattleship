@@ -1,0 +1,12 @@
+Most of our program was the same when compared to our project plan.
+The main difference was that we included far more class functions than we
+initially thought we would need (however we were marked with a zero for
+data members and functions in the project plan so I won't bother explaining
+every change as technically they were all changed).
+
+The other main difference that actually differed from the project plan was that
+we added a new class. This was the MainMenu class. We could've coded up the
+menu in it's entirety directly in the main, but we thought it would be more
+oop like to have a separate class responsible for a main menu's functionalities.
+We included a way to: start the game, check the rules, check statistics of past
+games, and quit the program.

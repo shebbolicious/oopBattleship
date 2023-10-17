@@ -58,10 +58,20 @@ std::ifstream inputFile("rules.txt");
         }
         inputFile.close();
     } else {
-        std::cout << "Error: Unable to open the instructions file." << std::endl;
+        std::cout << "Unable to open the Game Rules file." << std::endl;
     }
 }
 
 void MainMenu::showStats() {
-// Read in from text
+    std::ifstream inputFile("statistics.txt");
+
+    if (inputFile.is_open()) {
+        std::string line;
+        while (std::getline(inputFile, line)) {
+            std::cout << line << std::endl;
+        }
+        inputFile.close();
+    } else {
+        std::cout << "No statistics available." << std::endl;
+    }
 }
