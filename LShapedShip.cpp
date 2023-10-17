@@ -13,12 +13,11 @@ bool LShapedShip::isVertical() const {
     return vertical;
 }
 
-LShapedShip::LShapedShip() : Ship(0), x(0), y(0), length(0), vertical(false) {
-    // Initialize properties here
+LShapedShip::LShapedShip() : Ship(0), x(0), y(0) {
 }
 
 LShapedShip::LShapedShip(int x, int y, int length, bool vertical) : Ship(length) {
-    // Initialize properties using the provided values
+    // Initialise properties:
     this->x = x;
     this->y = y;
     this->length = length;

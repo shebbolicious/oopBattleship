@@ -5,12 +5,12 @@
 
 class MainMenu {
 public:
-    MainMenu();
-    void showMenu();
-    void showRules();
-    void showStats();
-    int getChoice();
-    void runChoice(int choice);
+    MainMenu(); // Constructor
+    void showMenu(); // Shows the menu in the command window
+    void showRules(); // Shows the rules section of menu
+    void showStats(); // Shows the statistics section of menu
+    int getChoice(); // Gets the user's input as their choice
+    void runChoice(int choice); // Runs based on choice
 
 private:
     bool inMainMenu;

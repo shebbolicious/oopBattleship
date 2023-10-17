@@ -23,10 +23,9 @@ StraightShip::StraightShip() : Ship(0), x(0), y(0) {
 }
 
 StraightShip::StraightShip(int x, int y, int length, bool vertical) : Ship(length) {
-    // Initialize properties using the provided values
+    // Initialise properties:
     this->x = x;
     this->y = y;
     this->length = length;
     this->vertical = vertical;
-    // Additional initialization if needed
 }

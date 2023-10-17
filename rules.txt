@@ -1,18 +1,14 @@
 This is a spin on the classic 2 player game of battleship.
 
-Each player will first place 6 ships, either vertically or horizontally.
-4 of these ships will be regular 2 long ships.
-1 ship will be an L-Shaped Ship, 3 long and 2 wide.
-1 ship will be a Stealth Ship, 3 long. 
-The Stealth Ship acts like a regular ship, with the
-only difference being that when it is hit it will show
-up as a miss.
+Each player will first place 6 ships, either vertically or horizontally.  4 of these
+ships will be regular 2 long ships.  1 ship will be an L-Shaped Ship, 
+3 long and 2 wide.  1 ship will be a Stealth Ship, 3 long. 
+The Stealth Ship acts like a regular ship, with the only difference being that 
+when it is hit it will show up as a miss.
 
-There is a regular missile, of which each player gets an
-unlimited amount. Grid coordinates are entered to 'shoot' the missile.
-A hit will appear as an O and a miss will appear as an X.
-There is also 1 row and 1 column missile, which respectively
-takes out an entire row or column.
-Finally, there is also 1 sonar missile, which acts as a regular
-missile but also scans in a 3x3 area of the hit coordinate and reveals
-whether there is a ship within that area.
+There is a regular missile, of which each player gets an unlimited amount. 
+Grid coordinates are entered to 'shoot' the missile.  A hit will appear as 
+an O and a miss will appear as an X. There is also 1 row and 1 column missile, 
+which respectively takes out an entire row or column. Finally, there is also 
+1 sonar missile, which acts as a regular missile but also scans in a 3x3 area 
+of the hit coordinate and reveals whether there is a ship within that area.

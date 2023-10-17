@@ -6,6 +6,7 @@
 MainMenu::MainMenu() : inMainMenu(true) {}
 
 void MainMenu::showMenu() {
+    // Displays the different menu choices
     std::cout << "   Main Menu" << std::endl;
     std::cout << "1) Start Game" << std::endl;
     std::cout << "2) Game Rules" << std::endl;
@@ -13,12 +14,14 @@ void MainMenu::showMenu() {
     std::cout << "4) Quit" << std::endl;
 }
 
+// Gets the user's choice
 int MainMenu::getChoice() {
     int choice;
     std::cin >> choice;
     return choice;
 }
 
+// Runs based on user's choice
 void MainMenu::runChoice(int choice) {
     switch (choice) {
         case 1:
@@ -43,7 +46,9 @@ void MainMenu::runChoice(int choice) {
     }
 }
 
+// Shows the games rules section of menu
 void MainMenu::showRules() {
+// Retrieves data/text from external txt file
 std::ifstream inputFile("rules.txt");
 
     if (inputFile.is_open()) {

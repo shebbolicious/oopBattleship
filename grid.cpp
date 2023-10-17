@@ -9,7 +9,6 @@ Grid::Grid() {
     grid.resize(GRID_SIZE, std::vector<char>(GRID_SIZE, ' ')); // Initialize the grid with empty spaces
 }
 
-
 char Grid :: Getcell(int x, int y)const {
 
     if(x>=0&&x<10 && y>=0 &&y<10){

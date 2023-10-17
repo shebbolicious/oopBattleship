@@ -8,140 +8,157 @@
 #include "StealthShip.h"
 #include "MainMenu.h"
 #include "BattleshipTests.h"
+
 using namespace std;
 
 int main() {
   
+  // Runs the tests set up in the BattleshipTests header file
   BattleshipTests::runAllTests();
     //std::cout << "All tests passed!" << std::endl;
 
   // Main Menu implementation
   MainMenu menu;
-    string pog;
+    string pog; // Declare variable for later user input
     while (true) {
-        menu.showMenu();
+        menu.showMenu(); // Calls function from Main Menu class to display menu
+        
+        int choice; // Declares choice variable
+        cin >> choice; // Gets user input
 
-        int choice;
-        cin >> choice;
-
+        // Defensive code to prevent infinite loop
         if (cin.fail()) {
             cin.clear(); // Clear the fail state.
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the invalid input.
             cout << "Invalid input. Enter a valid option (1, 2, 3, or 4)." << endl;
             continue;
         } else {
-            menu.runChoice(choice);
+            menu.runChoice(choice); // Runs if input is valid
 
             if (choice == 1) {
-                break;
+                break; // Breaks out of menu and begins the game
             } else if (choice == 4) {
-                return 0;
+                return 0; // Stops the program
             }
         }
+        // A pause/break to get back to the menu screen when ready
         std::cout << "Enter anything to return to the menu screen." << std::endl;
-        std::cin >> pog;
+        std::cin >> pog; // Any input will return to the menu
     }
 
   // Initialize game objects
   Grid player1Grid;
   Grid player2Grid;
 
+  // Declare and initialise variables including flag variables
   bool validInput = false;
   int ship1[2];
   bool isHorizontal = true;     
   string isHorizontalInput;
 
   bool playerOneship = true;
-
   bool playerTwoship = true;
-  int playerOnecount = 0;
 
+  int playerOnecount = 0;
   int playerTwocount = 0;
 
   std::vector<StraightShip> ships;
-
   std::vector<StraightShip> ships2;
 
   // Player 1 LShapedShip
 
-  cout << "player ones turn! \n" << endl;
+  // Display message
+  cout << "Player ones turn! \n" << endl;
 
+    // Declare and initialise variables and flag variables
     validInput = false;
     isHorizontal = true;
     int Lship1[2];
     
+    // Display message
     cout << "Is L ship vertical or horizontal (v or h): " << endl;
 
 while (true) {
-    cin >> isHorizontalInput;
+    cin >> isHorizontalInput; // Get user input for vertical or horizontal
     
     if (isHorizontalInput == "v" || isHorizontalInput == "h") {
         if (isHorizontalInput == "h") {
-            isHorizontal = false;
+            isHorizontal = false; // Sets flag variable based on input
         }
-        break; // Exit the loop when valid input is provided
+        break; // Exits the loop when valid input is provided
     } else {
+        // Error message and loops back through if invalid input
         cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
     }
 }
-
-    cout << "Enter ship 1 coordinates: " << endl;
+    // Display message
+    cout << "Enter L ship coordinates (x,y): " << endl;
     while (!validInput) {
+    // Gets user input for x and y coordinates
     if (cin >> Lship1[0] >> Lship1[1]) {
+    // Defensive coding to stop unwanted errors
     if ((isHorizontalInput == "h" && Lship1[1] == 8) || (isHorizontalInput == "h" && Lship1[1] == 9) || (isHorizontalInput == "v" && Lship1[0] == 9)) {
-        cout << "Invalid placement. The ship goes out of bounds. Enter ship 1 coordinates:" << endl;
+        cout << "Invalid placement. The ship goes out of bounds. Enter L ship coordinates:" << endl;
         continue;
     } else if (player1Grid.isValidPlacement(Lship1[1], Lship1[0], 3, isHorizontal)) {
-            validInput = true;
+            validInput = true; // Sets flag variable if placement is valid
     } else {
-         cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+        // Error message and loops back through if invalid input
+        cout << "Invalid input. Enter L ship coordinates:" << endl;
     }
     } else {
         // Clear the error state and discard the invalid input
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Invalid input. Enter number coordinates:" << endl;
+        cout << "Invalid input. Enter numerical coordinates:" << endl;
     }
     };
 
+    // Creates L Ship object with user inputs
     LShapedShip player1LShip1(Lship1[1], Lship1[0], 3, isHorizontal);
 
+    // Places L Ship on grid
     player1Grid.placeLShip(player1LShip1);
 
+    // Displays player 1 grid
     player1Grid.display();
 
 
     // Player 1 StealthShip
 
+    // Declare and initialise variables including flag variables
     validInput = false;
     int stealthship[2];
     isHorizontal = true;
     
+    // Display message
     cout << "Is the stealth ship vertical or horizontal (v or h): " << endl;
 
 while (true) {
-    cin >> isHorizontalInput;
+    cin >> isHorizontalInput; // Gets user input for vertical or horizontal
     
     if (isHorizontalInput == "v" || isHorizontalInput == "h") {
         if (isHorizontalInput == "h") {
-            isHorizontal = false;
+            isHorizontal = false; // Sets flag
         }
         break; // Exit the loop when valid input is provided
     } else {
         cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
     }
 }
-    
+    // Display message
     cout << "Enter stealth ships coordinates: " << endl;
     while (!validInput) {
+    // Get user input for stealth ship coordinates
     if (cin >> stealthship[0] >> stealthship[1]) {
+    // Defensive coding to stop unwanted errors
     if ((isHorizontalInput == "h" && stealthship[1] == 8) || (isHorizontalInput == "h" && stealthship[1] == 9) || (isHorizontalInput == "v" && stealthship[0] == 9)) {
-        cout << "Invalid placement. The ship goes out of bounds. Enter ship 1 coordinates:" << endl;
+        cout << "Invalid placement. Enter stealth ship coordinates:" << endl;
         continue;
     } else if (player1Grid.isValidPlacement(stealthship[1], stealthship[0], 3, isHorizontal)) {
-            validInput = true;
+            validInput = true; // Sets flag
     } else {
-         cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+         cout << "Invalid input. Enter stealth ship coordinates:" << endl;
     }
     } else {
         // Clear the error state and discard the invalid input
@@ -151,24 +168,32 @@ while (true) {
     }
     };
 
+    // Creates Stealth Ship object with user inputs
     StealthShip player1Stealth(stealthship[1], stealthship[0], 3, isHorizontal);
 
+    // Places Stealth Ship on grid
     player1Grid.placeStealthShip(player1Stealth);
 
+    // Displays player 1 grid
     player1Grid.display();
 
-  // initialise a loop that asks player 1 and two to set up ships
-
+  // Initialise a loop that asks player 1 and two to set up ships
   while (playerOneship) {
     player1Grid.display();
 
+    // We want to create 4 Straight Ships (from 0 to 3)
     while (playerOnecount < 4) {
-      // char
-      cout << "Place your 2 long ship\n" << endl;
+
+      // Declare variables
+      validInput = false;
+      isHorizontal = true;
+
+      // Display messages
+      cout << "Place your Straight Ships:" << endl;
       cout << "Is this ship vertical or horizontal (v or h): " << endl;
 
       while (true) {
-        cin >> isHorizontalInput;
+        cin >> isHorizontalInput; // Get user input
 
         if (isHorizontalInput == "v" || isHorizontalInput == "h") {
           if (isHorizontalInput == "h") {
@@ -181,31 +206,35 @@ while (true) {
               << endl;
         }
       }
-
+      // Display message
       cout << "Enter ship " << playerOnecount + 1 << " coordinates (x,y) "
            << endl;
       while (!validInput) {
-        if (cin >> ship1[0] >> ship1[1]) {
+        if (cin >> ship1[0] >> ship1[1]) { // Get user input
         if (player1Grid.isValidPlacement(ship1[1], ship1[0], 2, isHorizontal)) {
-            validInput = true;
+            validInput = true; // Set flag
         } else {
-            cout << "Invalid placement. Enter ship 1 coordinates:" << endl;
+            cout << "Invalid placement. Enter ship coordinates:" << endl;
         }
     } else {
+        // Defensive coding to stop infinite loops
         // Clear the error state and discard the invalid input
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Invalid input. Enter number coordinates:" << endl;
+        cout << "Invalid input. Enter numerical coordinates:" << endl;
     }
 }
-
+      // Create Straight Ship object with given inputs
       StraightShip Ship(ship1[1], ship1[0], 2, isHorizontal);
       ships.push_back(Ship);
 
+      // Place Straight Ship
       player1Grid.placeShip(ships[playerOnecount]);
 
+      // Display Player 1 grid
       player1Grid.display();
 
+      // Updates/resets variables
       playerOnecount = playerOnecount + 1;
       isHorizontal = true;
       validInput = false;
@@ -216,65 +245,77 @@ while (true) {
 
   // Create ships for player 2
 
-  cout << "player twos turn! \n" << endl;
+  // Display message
+  cout << "Player twos turn! \n" << endl;
 
      // Player 2 LShapedShip
 
+    // Declare and initialize variables and flag variables
     validInput = false;
     isHorizontal = true;
     int Lship2[2];
     
+    // Display message
     cout << "Is L ship vertical or horizontal (v or h): " << endl;
 
 while (true) {
-    cin >> isHorizontalInput;
+    cin >> isHorizontalInput; // Get user input for vertical or horizontal
     
     if (isHorizontalInput == "v" || isHorizontalInput == "h") {
         if (isHorizontalInput == "h") {
-            isHorizontal = false;
+            isHorizontal = false; // Sets flag variable based on input
         }
-        break; // Exit the loop when valid input is provided
+        break; // Exits the loop when valid input is provided
     } else {
+        // Error message and loops back through if invalid input
         cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
     }
 }
-
-      cout << "Enter ship 1 coordinates: " << endl;
+      // Display message
+      cout << "Enter L ship coordinates (x,y): " << endl;
     while (!validInput) {
+    // Gets user input for x and y coordinates
     if (cin >> Lship2[0] >> Lship2[1]) {
+    // Defensive coding to stop unwanted errors
     if ((isHorizontalInput == "h" && Lship2[1] == 8) || (isHorizontalInput == "h" && Lship2[1] == 9) || (isHorizontalInput == "v" && Lship2[0] == 9)) {
-        cout << "Invalid placement. The ship goes out of bounds. Enter ship 1 coordinates:" << endl;
+        cout << "Invalid placement. Enter L ship coordinates:" << endl;
         continue;
     } else if (player2Grid.isValidPlacement(Lship2[1], Lship2[0], 3, isHorizontal)) {
             validInput = true;
     } else {
-         cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+         // Error message and loops back through if invalid input
+         cout << "Invalid input. Enter L ship coordinates:" << endl;
     }
     } else {
         // Clear the error state and discard the invalid input
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Invalid input. Enter number coordinates:" << endl;
+        cout << "Invalid input. Enter numerical coordinates:" << endl;
     }
     };
 
+    // Creates L Ship object with user inputs
     LShapedShip player2LShip1(Lship2[1], Lship2[0], 3, isHorizontal);
 
+    // Places L Ship on grid
     player2Grid.placeLShip(player2LShip1);
 
+    // Displays player 2 grid
     player2Grid.display();
 
 
     // Player 2 StealthShip
 
+    // Declare and initialize variables including flag variables
     validInput = false;
     int stealthship2[2];
     isHorizontal = true;
     
+    // Display message
     cout << "Is the stealth ship vertical or horizontal (v or h): " << endl;
 
 while (true) {
-    cin >> isHorizontalInput;
+    cin >> isHorizontalInput; // Gets user input for vertical or horizontal
     
     if (isHorizontalInput == "v" || isHorizontalInput == "h") {
         if (isHorizontalInput == "h") {
@@ -286,29 +327,35 @@ while (true) {
     }
 }
 
+      // Display message
       cout << "Enter stealth ships coordinates: " << endl;
     while (!validInput) {
+    // Get user input for stealth ship coordinates
     if (cin >> stealthship2[0] >> stealthship2[1]) {
+    // Defensive coding to stop unwanted errors
     if ((isHorizontalInput == "h" && stealthship2[1] == 8) || (isHorizontalInput == "h" && stealthship2[1] == 9) || (isHorizontalInput == "v" && stealthship2[0] == 9)) {
-        cout << "Invalid placement. The ship goes out of bounds. Enter ship 1 coordinates:" << endl;
+        cout << "Invalid placement. Enter stealth ship coordinates:" << endl;
         continue;
     } else if (player2Grid.isValidPlacement(stealthship2[1], stealthship2[0], 3, isHorizontal)) {
             validInput = true;
     } else {
-         cout << "Invalid input. Enter ship 1 coordinates:" << endl;
+         cout << "Invalid input. Enter stealth ship coordinates:" << endl;
     }
     } else {
         // Clear the error state and discard the invalid input
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Invalid input. Enter number coordinates:" << endl;
+        cout << "Invalid input. Enter numerical coordinates:" << endl;
     }
     };
 
+    // Creates Stealth Ship object with user inputs
     StealthShip player2Stealth(stealthship2[1], stealthship2[0], 3, isHorizontal);
 
+    // Places Stealth Ship on grid
     player2Grid.placeStealthShip(player2Stealth);
 
+    // Displays player 2 grid
     player2Grid.display();
 
     // Create the regular 2 long straight ships for Player 2
@@ -319,7 +366,10 @@ while (true) {
     while (playerTwocount < 4) {
       // char
 
-      cout << "/n Is this ship  vertical or horizontal (v or h): " << endl;
+      validInput = false;
+      isHorizontal = true;
+
+      cout << "\nIs this ship vertical or horizontal (v or h): " << endl;
 
       while (true) {
         cin >> isHorizontalInput;
@@ -336,28 +386,33 @@ while (true) {
         }
       }
 
-      cout << "Enter ship " << playerTwocount + 1 << " coordinates (y,x) "
+      int ship2[2];
+
+      cout << "Enter ship " << playerTwocount + 1 << " coordinates (x,y) "
            << endl;
       while (!validInput) {
-        if (cin >> ship1[0] >> ship1[1]) {
-        if (player2Grid.isValidPlacement(ship1[1], ship1[0], 2, isHorizontal)) {
+        if (cin >> ship2[0] >> ship2[1]) {
+        if (player2Grid.isValidPlacement(ship2[1], ship2[0], 2, isHorizontal)) {
             validInput = true;
         } else {
-            cout << "Invalid placement. Enter ship 1 coordinates:" << endl;
+            cout << "Invalid placement. Enter ship coordinates:" << endl;
         }
     } else {
         // Clear the error state and discard the invalid input
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Invalid input. Enter number coordinates:" << endl;
+        cout << "Invalid input. Enter numerical coordinates:" << endl;
     }
 }
 
-      StraightShip Ship(ship1[0], ship1[1], 2, isHorizontal);
-      ships2.push_back(Ship);
+      // Create Straight Ship object with given inputs
+      StraightShip Ship2(ship2[1], ship2[0], 2, isHorizontal);
+      ships2.push_back(Ship2);
 
-      player2Grid.placeShip(ships2[playerOnecount]);
+      // Place Straight Ship on grid
+      player2Grid.placeShip(ships2[playerTwocount]);
 
+      // Display Player 2 grid
       player2Grid.display();
 
       playerTwocount = playerTwocount + 1;

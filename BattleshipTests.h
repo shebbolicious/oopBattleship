@@ -1,4 +1,7 @@
 // BattleshipTests.h
+// This header file is implemented to create tests to check whether the grid is
+// setup correctly, and whether the ships are able to be correctly placed
+// the tests are implemented and run in the main.cpp file
 #ifndef BATTLESHIP_TESTS_H
 #define BATTLESHIP_TESTS_H
 
@@ -11,15 +14,15 @@
 class BattleshipTests {
 public:
     static void runAllTests() {
-        testGridInitialization();
-        testStraightShipPlacement();
-        testHorizontalStraightShipPlacement();
-        testLShapedShipPlacement();
-        testStealthShipPlacement();
+        testGridSetup();
+        testStraightShipPlacing();
+        testHorizontalStraightShipPlacing();
+        testLShapedShipPlacing();
+        testStealthShipPlacing();
     }
 
 private:
-    static void testGridInitialization() {
+    static void testGridSetup() {
         Grid grid;
         for (int i = 0; i < 10; ++i) {
             for (int j = 0; j < 10; ++j) {
@@ -28,7 +31,7 @@ private:
         }
     }
 
-    static void testStraightShipPlacement() {
+    static void testStraightShipPlacing() {
         Grid grid;
         StraightShip straightShip(2, 3, 3, true);
         assert(grid.placeShip(straightShip));
@@ -37,7 +40,7 @@ private:
         }
     }
 
-    static void testHorizontalStraightShipPlacement() {
+    static void testHorizontalStraightShipPlacing() {
         Grid grid;
         StraightShip horizontalShip(5, 1, 4, false);
         assert(grid.placeShip(horizontalShip));
@@ -46,9 +49,9 @@ private:
         }
     }
 
-    static void testLShapedShipPlacement() {
+    static void testLShapedShipPlacing() {
     Grid grid;
-    LShapedShip lShapedShip(7, 7, 3, true); // Update this line
+    LShapedShip lShapedShip(7, 7, 3, true);
     assert(grid.placeLShip(lShapedShip));
     assert(grid.Getcell(7, 7) == '|');
     assert(grid.Getcell(8, 7) == '|');
@@ -57,7 +60,7 @@ private:
 }
 
 
-    static void testStealthShipPlacement() {
+    static void testStealthShipPlacing() {
         Grid grid;
         StealthShip stealthShip(0, 9, 3, true);
         assert(grid.placeStealthShip(stealthShip));
@@ -65,18 +68,6 @@ private:
             assert(grid.Getcell(i, 9) == 'S');
         }
     }
-
-    /*static void testGameOver() {
-        Grid grid;
-        // Place and sink all ships to simulate a game over
-        StraightShip ship1(0, 0, 1, true);
-        StraightShip ship2(0, 1, 1, true);
-        grid.placeShip(ship1);
-        grid.placeShip(ship2);
-        grid.checkHit(0, 0);
-        grid.checkHit(0, 1);
-        assert(grid.isGameOver());
-    }*/
 };
 
 #endif // BATTLESHIP_TESTS_H

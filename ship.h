@@ -4,7 +4,7 @@
 class Ship {
 public:
     Ship(int length);
-    virtual ~Ship() = default; // Make the base class abstract
+    virtual ~Ship() = default; // Abstract Class
     virtual int getLength() const;
 protected:
     int length;
