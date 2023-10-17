@@ -10,7 +10,7 @@ CXXFLAGS = -std=c++11 -Wall -Wextra
 TARGET = run
 
 # Source files
-SRCS = main.cpp grid.cpp LShapedShip.cpp Missile.cpp ship.cpp StealthShip.cpp StraightShip.cpp
+SRCS = main.cpp grid.cpp LShapedShip.cpp Missile.cpp ship.cpp StealthShip.cpp StraightShip.cpp MainMenu.cpp
 
 # Build and run tests
 .PHONY: all
