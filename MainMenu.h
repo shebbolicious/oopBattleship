@@ -11,6 +11,7 @@ public:
     void showStats(); // Shows the statistics section of menu
     int getChoice(); // Gets the user's input as their choice
     void runChoice(int choice); // Runs based on choice
+    void saveResults(const std::string& winner, int shots); // Saves winning details
 
 private:
     bool inMainMenu;

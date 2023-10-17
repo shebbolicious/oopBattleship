@@ -1,1 +1,2 @@
-Hello there
+Player 1 (Mike) won in 34 Shots
+Player 2 (Sebs) won in 41 Shots

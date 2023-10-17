@@ -75,3 +75,14 @@ void MainMenu::showStats() {
         std::cout << "No statistics available." << std::endl;
     }
 }
+
+void MainMenu::saveResults(const std::string& winner, int shots) {
+    std::ofstream outputFile("statistics.txt", std::ios::app);  // Appends
+    if (outputFile.is_open()) {
+        outputFile << "Winner: " << winner << " | Shots: " << shots << "\n";
+        outputFile.close();
+    } else {
+        std::cout << "Unable to save results." << std::endl;
+    }
+}
+
