@@ -10,9 +10,6 @@ private:
 public:
     StealthShip();
     StealthShip(int x, int y, int length, bool vertical);
-
-    bool isHit(int x, int y) const override;
-    bool isHitFirstTime(int x, int y) const;
 };
 
 #endif

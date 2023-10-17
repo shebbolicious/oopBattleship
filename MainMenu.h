@@ -10,10 +10,10 @@ public:
     void showRules();
     void showStats();
     int getChoice();
-    void handleChoice(int choice);
+    void runChoice(int choice);
 
 private:
     bool inMainMenu;
 };
 
-#endif
+#endif // MAINMENU_H

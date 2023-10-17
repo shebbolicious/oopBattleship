@@ -19,7 +19,7 @@ int MainMenu::getChoice() {
     return choice;
 }
 
-void MainMenu::handleChoice(int choice) {
+void MainMenu::runChoice(int choice) {
     switch (choice) {
         case 1:
             // Start Game

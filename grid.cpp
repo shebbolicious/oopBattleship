@@ -51,17 +51,6 @@ void Grid::display() {
     }
 }
 
-bool Grid::checkHit(int x, int y) {
-    for (Ship& ship : ships) {
-        if (ship.isHit(x, y)) {
-            grid[x][y] = 'X'; // Mark the hit on the grid
-            return true;
-        }
-    }
-    grid[x][y] = 'O'; // Mark the miss on the grid
-    return false;
-}
-
 bool Grid::placeShip(const StraightShip& ship) {
     int x = ship.getX();
     int y = ship.getY();
@@ -136,15 +125,6 @@ bool Grid::placeStealthShip(const StealthShip& ship) {
         return true;
     }
     return false;
-}
-
-bool Grid::isGameOver() {
-    for (const Ship& ship : ships) {
-        if (!ship.isSunk()) {
-            return false; // If any ship is not sunk, the game is not over
-        }
-    }
-    return true; // All ships are sunk; the game is over
 }
 
 bool Grid::isValidPlacement(int x, int y, int length, bool vertical) {

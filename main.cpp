@@ -7,9 +7,14 @@
 #include "StraightShip.h"
 #include "StealthShip.h"
 #include "MainMenu.h"
+#include "BattleshipTests.h"
 using namespace std;
 
 int main() {
+  
+  BattleshipTests::runAllTests();
+    //std::cout << "All tests passed!" << std::endl;
+
   // Main Menu implementation
   MainMenu menu;
     string pog;
@@ -25,7 +30,7 @@ int main() {
             cout << "Invalid input. Enter a valid option (1, 2, 3, or 4)." << endl;
             continue;
         } else {
-            menu.handleChoice(choice);
+            menu.runChoice(choice);
 
             if (choice == 1) {
                 break;
@@ -36,8 +41,6 @@ int main() {
         std::cout << "Enter anything to return to the menu screen." << std::endl;
         std::cin >> pog;
     }
-
-
 
   // Initialize game objects
   Grid player1Grid;
@@ -128,6 +131,7 @@ while (true) {
         cout << "Invalid input. Enter 'v' for vertical or 'h' for horizontal: " << endl;
     }
 }
+    
     cout << "Enter stealth ships coordinates: " << endl;
     while (!validInput) {
     if (cin >> stealthship[0] >> stealthship[1]) {
@@ -147,12 +151,11 @@ while (true) {
     }
     };
 
-    StealthShip player1Stealth(ship1[1], ship1[0], 3, isHorizontal);
+    StealthShip player1Stealth(stealthship[1], stealthship[0], 3, isHorizontal);
 
     player1Grid.placeStealthShip(player1Stealth);
 
     player1Grid.display();
-
 
   // initialise a loop that asks player 1 and two to set up ships
 
@@ -161,8 +164,8 @@ while (true) {
 
     while (playerOnecount < 4) {
       // char
-
-      cout << "\n Is this ship vertical or horizontal (v or h): " << endl;
+      cout << "Place your 2 long ship\n" << endl;
+      cout << "Is this ship vertical or horizontal (v or h): " << endl;
 
       while (true) {
         cin >> isHorizontalInput;
